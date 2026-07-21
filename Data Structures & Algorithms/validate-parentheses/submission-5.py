@@ -1,0 +1,13 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        sample_dict = {')': '(', '}':'{',']':'['}
+        stack = []
+
+        for i in s:
+            if i in sample_dict and len(stack) >0:
+                temp = stack.pop()
+                if temp != sample_dict[i]:
+                    return False
+            else:
+                stack.append(i)
+        return len(stack)== 0
